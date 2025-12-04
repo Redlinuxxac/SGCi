@@ -1,14 +1,14 @@
 <form wire:submit.prevent="save">
-    <h2 class="text-xl font-semibold mb-4">{{ $role ? 'Editar Rol' : 'Crear Nuevo Rol' }}</h2>
+    <h2 class="text-xl font-semibold mb-4">{{ $role ? __('seguridad.edit_role_title') : __('seguridad.create_new_role_title') }}</h2>
     
     <div>
-        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre del Rol</label>
+        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('seguridad.table_header_role_name') }}</label>
         <input wire:model="name" type="text" id="name" @if($role && $role->name === 'admin') readonly @endif class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
     </div>
 
     <div class="mt-4">
-        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Permisos</h3>
+        <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('seguridad.permissions_title') }}</h3>
         <div class="mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach($allPermissions as $permission)
                 <div class="flex items-center">
@@ -24,10 +24,10 @@
 
     <div class="mt-6 flex justify-end space-x-4">
         <button type="button" wire:click="$dispatch('role-saved')" class="btn btn-secondary">
-            Cancelar
+            {{ __('app.Cancelar') }}
         </button>
         <button type="submit" class="btn btn-primary">
-            Guardar
+            {{ __('app.Guardar') }}
         </button>
     </div>
 </form>

@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Gestión de Ahorros</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('ahorros.management_title') }}</h1>
 
     <div class="py-4">
         @can('ahorros.create')
         <div class="flex justify-end">
             <button wire:click="create" class="btn btn-primary">
                 <x-flux::icon name="plus" class="h-5 w-5" />
-                <span>Crear Cuenta de Ahorro</span>
+                <span>{{ __('ahorros.create_button') }}</span>
             </button>
         </div>
         @endcan
@@ -17,19 +17,19 @@
             <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Socio
+                        {{ __('ahorros.table_header_member') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Tipo de Cuenta
+                        {{ __('ahorros.table_header_account_type') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Saldo
+                        {{ __('ahorros.table_header_balance') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Estado
+                        {{ __('app.Estado') }}
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Acciones</span>
+                        <span class="sr-only">{{ __('app.Acciones') }}</span>
                     </th>
                 </tr>
             </thead>
@@ -40,7 +40,7 @@
                             {{ $ahorro->socio->nombres ?? 'N/A' }} {{ $ahorro->socio->apellidos ?? '' }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                            {{ $ahorro->tipo_cuenta }}
+                            {{ __('ahorros.' . $ahorro->tipo_cuenta) }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                             {{ number_format($ahorro->saldo, 2) }}
@@ -55,22 +55,22 @@
                                     bg-red-100 text-red-800
                                 @endif
                             ">
-                                {{ $ahorro->estado }}
+                                {{ __('app.' . $ahorro->estado) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @can('ahorros.edit')
-                            <button wire:click="edit({{ $ahorro->id }})" class="btn btn-secondary">Editar</button>
+                            <button wire:click="edit({{ $ahorro->id }})" class="btn btn-secondary">{{ __('app.Editar') }}</button>
                             @endcan
                             @can('ahorros.delete')
-                            <button wire:click="delete({{ $ahorro->id }})" wire:confirm="¿Está seguro de que desea eliminar esta cuenta?" class="btn btn-danger ml-2">Eliminar</button>
+                            <button wire:click="delete({{ $ahorro->id }})" wire:confirm="{{ __('ahorros.confirm_delete') }}" class="btn btn-danger ml-2">{{ __('app.Eliminar') }}</button>
                             @endcan
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="5" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            No hay cuentas de ahorro registradas.
+                            {{ __('ahorros.no_records') }}
                         </td>
                     </tr>
                 @endforelse

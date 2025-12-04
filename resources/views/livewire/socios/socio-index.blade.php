@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Gestión de Socios</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('socios.management_title') }}</h1>
 
     <div class="py-4">
         @can('socios.create')
         <div class="flex justify-end">
             <button wire:click="create" class="btn btn-primary">
                 <x-flux::icon name="plus" class="h-5 w-5" />
-                <span>Crear Socio</span>
+                <span>{{ __('socios.create_button') }}</span>
             </button>
         </div>
         @endcan
@@ -17,19 +17,19 @@
             <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Nombres
+                        {{ __('socios.table_header_first_names') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Apellidos
+                        {{ __('socios.table_header_last_names') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Cédula
+                        {{ __('socios.table_header_id_number') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Estado
+                        {{ __('app.Estado') }}
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Acciones</span>
+                        <span class="sr-only">{{ __('app.Acciones') }}</span>
                     </th>
                 </tr>
             </thead>
@@ -53,22 +53,22 @@
                                     @case('pendiente') bg-yellow-100 text-yellow-800 @break
                                 @endswitch
                             ">
-                                {{ $socio->estado }}
+                                {{ __('app.' . $socio->estado) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @can('socios.edit')
-                            <button wire:click="edit({{ $socio->id }})" class="btn btn-secondary">Editar</button>
+                            <button wire:click="edit({{ $socio->id }})" class="btn btn-secondary">{{ __('app.Editar') }}</button>
                             @endcan
                             @can('socios.delete')
-                            <button wire:click="delete({{ $socio->id }})" wire:confirm="¿Está seguro de que desea eliminar este socio?" class="btn btn-danger ml-2">Eliminar</button>
+                            <button wire:click="delete({{ $socio->id }})" wire:confirm="{{ __('socios.confirm_delete') }}" class="btn btn-danger ml-2">{{ __('app.Eliminar') }}</button>
                             @endcan
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="5" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            No hay socios registrados.
+                            {{ __('socios.no_records') }}
                         </td>
                     </tr>
                 @endforelse

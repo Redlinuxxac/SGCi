@@ -12,37 +12,37 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('app.Platform')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('app.Dashboard') }}</flux:navlist.item>
                     @can('socios.view')
-                    <flux:navlist.item icon="users" :href="route('socios.index')" :current="request()->routeIs('socios.index')" wire:navigate>{{ __('Gestión de Socios') }}</flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('socios.index')" :current="request()->routeIs('socios.index')" wire:navigate>{{ __('socios.management_title') }}</flux:navlist.item>
                     @endcan
                     @can('prestamos.view')
-                    <flux:navlist.item icon="banknotes" :href="route('prestamos.index')" :current="request()->routeIs('prestamos.index')" wire:navigate>{{ __('Gestión de Préstamos') }}</flux:navlist.item>
+                    <flux:navlist.item icon="banknotes" :href="route('prestamos.index')" :current="request()->routeIs('prestamos.index')" wire:navigate>{{ __('prestamos.management_title') }}</flux:navlist.item>
                     @endcan
                     @can('ahorros.view')
-                    <flux:navlist.item icon="archive-box" :href="route('ahorros.index')" :current="request()->routeIs('ahorros.index')" wire:navigate>{{ __('Gestión de Ahorros') }}</flux:navlist.item>
+                    <flux:navlist.item icon="archive-box" :href="route('ahorros.index')" :current="request()->routeIs('ahorros.index')" wire:navigate>{{ __('ahorros.management_title') }}</flux:navlist.item>
                     @endcan
                     @can('cuentas_contables.view')
-                    <flux:navlist.item icon="book-open" :href="route('plan-cuentas.index')" :current="request()->routeIs('plan-cuentas.index')" wire:navigate>{{ __('Plan de Cuentas') }}</flux:navlist.item>
+                    <flux:navlist.item icon="book-open" :href="route('plan-cuentas.index')" :current="request()->routeIs('plan-cuentas.index')" wire:navigate>{{ __('contabilidad.chart_of_accounts_title') }}</flux:navlist.item>
                     @endcan
                     @can('asientos_contables.view')
-                    <flux:navlist.item icon="clipboard-document-list" :href="route('asientos.index')" :current="request()->routeIs('asientos.index')" wire:navigate>{{ __('Diario Contable') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('asientos.index')" :current="request()->routeIs('asientos.index')" wire:navigate>{{ __('contabilidad.journal_entries_title') }}</flux:navlist.item>
                     @endcan
                     @can('servicios.view')
-                    <flux:navlist.item icon="briefcase" :href="route('servicios.index')" :current="request()->routeIs('servicios.index')" wire:navigate>{{ __('Servicios Varios') }}</flux:navlist.item>
+                    <flux:navlist.item icon="briefcase" :href="route('servicios.index')" :current="request()->routeIs('servicios.index')" wire:navigate>{{ __('servicios.management_title') }}</flux:navlist.item>
                     @endcan
                     @can('auditoria.view')
-                    <flux:navlist.item icon="shield-check" :href="route('auditoria.index')" :current="request()->routeIs('auditoria.index')" wire:navigate>{{ __('Cumplimiento y Auditoría') }}</flux:navlist.item>
+                    <flux:navlist.item icon="shield-check" :href="route('auditoria.index')" :current="request()->routeIs('auditoria.index')" wire:navigate>{{ __('auditoria.management_title') }}</flux:navlist.item>
                     @endcan
                 </flux:navlist.group>
 
-                <flux:navlist.group :heading="__('Seguridad')" class="grid">
+                <flux:navlist.group :heading="__('seguridad.security_title')" class="grid">
                     @can('roles.view')
-                    <flux:navlist.item icon="key" :href="route('roles.index')" :current="request()->routeIs('roles.index')" wire:navigate>{{ __('Roles') }}</flux:navlist.item>
+                    <flux:navlist.item icon="key" :href="route('roles.index')" :current="request()->routeIs('roles.index')" wire:navigate>{{ __('seguridad.roles_title') }}</flux:navlist.item>
                     @endcan
                     @can('permisos.view')
-                    <flux:navlist.item icon="lock-closed" :href="route('permisos.index')" :current="request()->routeIs('permisos.index')" wire:navigate>{{ __('Permisos') }}</flux:navlist.item>
+                    <flux:navlist.item icon="lock-closed" :href="route('permisos.index')" :current="request()->routeIs('permisos.index')" wire:navigate>{{ __('seguridad.permissions_title') }}</flux:navlist.item>
                     @endcan
                 </flux:navlist.group>
             </flux:navlist>
@@ -51,7 +51,7 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="book-open-text" :href="route('documentacion.index')" wire:navigate>
-                {{ __('Documentation') }}
+                {{ __('docs.Documentation') }}
                 </flux:navlist.item>
             </flux:navlist>
 
@@ -87,7 +87,7 @@
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('app.Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
@@ -95,7 +95,7 @@
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full" data-test="logout-button">
-                            {{ __('Log Out') }}
+                            {{ __('app.Log Out') }}
                         </flux:menu.item>
                     </form>
                 </flux:menu>

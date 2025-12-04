@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Gestión de Roles</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('seguridad.roles_title') }}</h1>
 
     <div class="py-4">
         @can('roles.create')
         <div class="flex justify-end">
             <button wire:click="create" class="btn btn-primary">
                 <x-flux::icon name="plus" class="h-5 w-5" />
-                <span>Crear Rol</span>
+                <span>{{ __('seguridad.create_role_button') }}</span>
             </button>
         </div>
         @endcan
@@ -17,13 +17,13 @@
             <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Nombre del Rol
+                        {{ __('seguridad.table_header_role_name') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Nº de Permisos
+                        {{ __('seguridad.table_header_permissions_count') }}
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Acciones</span>
+                        <span class="sr-only">{{ __('app.Acciones') }}</span>
                     </th>
                 </tr>
             </thead>
@@ -38,11 +38,11 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @can('roles.edit')
-                            <button wire:click="edit({{ $role->id }})" class="btn btn-secondary">Editar</button>
+                            <button wire:click="edit({{ $role->id }})" class="btn btn-secondary">{{ __('app.Editar') }}</button>
                             @endcan
                             @if($role->name !== 'admin')
                                 @can('roles.delete')
-                                <button wire:click="delete({{ $role->id }})" wire:confirm="¿Está seguro de que desea eliminar este rol?" class="btn btn-danger ml-2">Eliminar</button>
+                                <button wire:click="delete({{ $role->id }})" wire:confirm="{{ __('seguridad.confirm_delete_role') }}" class="btn btn-danger ml-2">{{ __('app.Eliminar') }}</button>
                                 @endcan
                             @endif
                         </td>
@@ -50,7 +50,7 @@
                 @empty
                     <tr>
                         <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            No hay roles registrados.
+                            {{ __('seguridad.no_roles_registered') }}
                         </td>
                     </tr>
                 @endforelse

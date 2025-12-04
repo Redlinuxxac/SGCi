@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Diario Contable</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('contabilidad.journal_entries_title') }}</h1>
 
     <div class="py-4">
         @can('asientos_contables.create')
         <div class="flex justify-end">
             <button wire:click="create" class="btn btn-primary">
                 <x-flux::icon name="plus" class="h-5 w-5" />
-                <span>Crear Asiento</span>
+                <span>{{ __('contabilidad.create_entry_button') }}</span>
             </button>
         </div>
         @endcan
@@ -17,16 +17,16 @@
             <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Fecha
+                        {{ __('app.Fecha') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Descripción
+                        {{ __('app.Descripción') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Estado
+                        {{ __('app.Estado') }}
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Acciones</span>
+                        <span class="sr-only">{{ __('app.Acciones') }}</span>
                     </th>
                 </tr>
             </thead>
@@ -47,17 +47,17 @@
                                     bg-yellow-100 text-yellow-800
                                 @endif
                             ">
-                                {{ $asiento->estado }}
+                                {{ __('app.' . $asiento->estado) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button wire:click="view({{ $asiento->id }})" class="btn btn-secondary">Ver</button>
+                            <button wire:click="view({{ $asiento->id }})" class="btn btn-secondary">{{ __('app.Ver') }}</button>
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            No hay asientos contables registrados.
+                            {{ __('contabilidad.no_journal_entries') }}
                         </td>
                     </tr>
                 @endforelse

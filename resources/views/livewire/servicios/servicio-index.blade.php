@@ -1,12 +1,12 @@
 <div>
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Gestión de Servicios Varios</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('servicios.management_title') }}</h1>
 
     <div class="py-4">
         @can('servicios.create')
         <div class="flex justify-end">
             <button wire:click="create" class="btn btn-primary">
                 <x-flux::icon name="plus" class="h-5 w-5" />
-                <span>Crear Servicio</span>
+                <span>{{ __('servicios.create_button') }}</span>
             </button>
         </div>
         @endcan
@@ -17,16 +17,16 @@
             <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Nombre
+                        {{ __('app.Nombre') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Descripción
+                        {{ __('app.Descripción') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                        Estado
+                        {{ __('app.Estado') }}
                     </th>
                     <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Acciones</span>
+                        <span class="sr-only">{{ __('app.Acciones') }}</span>
                     </th>
                 </tr>
             </thead>
@@ -47,22 +47,22 @@
                                     bg-yellow-100 text-yellow-800
                                 @endif
                             ">
-                                {{ $servicio->estado }}
+                                {{ __('app.' . $servicio->estado) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             @can('servicios.edit')
-                            <button wire:click="edit({{ $servicio->id }})" class="btn btn-secondary">Editar</button>
+                            <button wire:click="edit({{ $servicio->id }})" class="btn btn-secondary">{{ __('app.Editar') }}</button>
                             @endcan
                             @can('servicios.delete')
-                            <button wire:click="delete({{ $servicio->id }})" wire:confirm="¿Está seguro de que desea eliminar este servicio?" class="btn btn-danger ml-2">Eliminar</button>
+                            <button wire:click="delete({{ $servicio->id }})" wire:confirm="{{ __('servicios.confirm_delete') }}" class="btn btn-danger ml-2">{{ __('app.Eliminar') }}</button>
                             @endcan
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            No hay servicios registrados.
+                            {{ __('servicios.no_records') }}
                         </td>
                     </tr>
                 @endforelse
