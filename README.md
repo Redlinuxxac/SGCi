@@ -73,8 +73,8 @@ Abre tu navegador y visita `http://127.0.0.1:8000` (o el puerto que Artisan te i
 
 Para acceder al panel de administración, utiliza las siguientes credenciales:
 
-*   **Correo:** `RosarioEdwinAC@gmail.com`
-*   **Contraseña:** `PPsae5938`
+*   **Correo:** `admin@sgci.com`
+*   **Contraseña:** `password`
 
 Este usuario tiene el rol de `admin` y posee todos los permisos para gestionar el sistema.
 
