@@ -24,7 +24,7 @@ class DepartmentalRolesSeeder extends Seeder
             'cuentas_contables.view',
             'asientos_contables.view',
             'auditoria.view',
-            'users.view', 'users.create', 'users.edit',
+            'users.view', 'users.create', 'users.edit', 'users.delete',
         ]);
 
         // Oficial de Crédito
@@ -52,6 +52,13 @@ class DepartmentalRolesSeeder extends Seeder
 
         // Socio (basic member, can't access the backend)
         $socio = Role::firstOrCreate(['name' => 'Socio']);
+        $socio->givePermissionTo([
+            'socio.dashboard.view',
+            'socio.profile.view',
+            'socio.profile.edit',
+            'socio.loans.view',
+            'socio.savings.view',
+        ]);
         // This role might have permissions for a future client portal, but not for the backend.
     }
 }

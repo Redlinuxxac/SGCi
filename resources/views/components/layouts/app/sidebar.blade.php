@@ -35,9 +35,17 @@
                     @can('auditoria.view')
                     <flux:navlist.item icon="shield-check" :href="route('auditoria.index')" :current="request()->routeIs('auditoria.index')" wire:navigate>{{ __('auditoria.management_title') }}</flux:navlist.item>
                     @endcan
+                    @can('users.view')
+                    <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('users.management_title') }}</flux:navlist.item>
+                    @endcan
                 </flux:navlist.group>
 
                 <flux:navlist.group :heading="__('seguridad.security_title')" class="grid">
+                    <!-- Only show user management if the user has any of the relevant permissions -->
+                    
+                    @can('users.view')
+                    <flux:navlist.item icon="user-circle" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('seguridad.users_title') }}</flux:navlist.item>
+                    @endcan
                     @can('roles.view')
                     <flux:navlist.item icon="key" :href="route('roles.index')" :current="request()->routeIs('roles.index')" wire:navigate>{{ __('seguridad.roles_title') }}</flux:navlist.item>
                     @endcan

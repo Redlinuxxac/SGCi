@@ -24,4 +24,9 @@ class Prestamo extends Model
     {
         return $this->belongsTo(Socio::class);
     }
+
+    public function cuotas()
+    {
+        return $this->hasMany(Cuota::class);
+    }
 }

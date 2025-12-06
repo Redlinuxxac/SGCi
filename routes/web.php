@@ -18,6 +18,11 @@ use App\Livewire\Auditoria\AuditoriaIndex;
 use App\Livewire\Seguridad\RoleIndex;
 use App\Livewire\Seguridad\PermissionIndex;
 use App\Livewire\Documentation\Index as DocumentationIndex;
+use App\Livewire\Users\UserIndex;
+use App\Livewire\Socio\Dashboard as SocioDashboard;
+use App\Livewire\Socio\Profile as SocioProfile;
+use App\Livewire\Socio\MyLoans as SocioMyLoans;
+use App\Livewire\Socio\MySavings as SocioMySavings;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,9 +40,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/plan-cuentas', PlanCuentasIndex::class)->name('plan-cuentas.index')->middleware('permission:cuentas_contables.view');
     Route::get('/asientos-contables', AsientoIndex::class)->name('asientos.index')->middleware('permission:asientos_contables.view');
     Route::get('/auditoria', AuditoriaIndex::class)->name('auditoria.index')->middleware('permission:auditoria.view');
+    Route::get('/users', UserIndex::class)->name('users.index')->middleware('permission:users.view');
     Route::get('/roles', RoleIndex::class)->name('roles.index')->middleware('permission:roles.view');
-    Route::get('/permisos', PermissionIndex::class)->name('permisos.index');
+    Route::get('/permisos', PermissionIndex::class)->name('permisos.index')->middleware('permission:permisos.view');
     Route::get('/documentacion', DocumentationIndex::class)->name('documentacion.index');
+
+    // Socio Portal Routes
+    Route::middleware('role:Socio')->group(function () {
+        Route::get('/socio/dashboard', SocioDashboard::class)->name('socio.dashboard');
+        Route::get('/socio/profile', SocioProfile::class)->name('socio.profile');
+        Route::get('/socio/my-loans', SocioMyLoans::class)->name('socio.my-loans');
+        Route::get('/socio/my-savings', SocioMySavings::class)->name('socio.my-savings');
+        Route::get('/socio/my-loans/{loan}/installments', \App\Livewire\Socio\LoanInstallments::class)->name('socio.my-loans.installments');
+    });
+
+    Route::redirect('settings', 'settings/profile');
 
     Route::redirect('settings', 'settings/profile');
 

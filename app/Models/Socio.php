@@ -24,4 +24,15 @@ class Socio extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Add the relationships
+    public function prestamos()
+    {
+        return $this->hasMany(Prestamo::class);
+    }
+
+    public function ahorros()
+    {
+        return $this->hasMany(Ahorro::class);
+    }
 }
