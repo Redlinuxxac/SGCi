@@ -12,7 +12,7 @@
         </div>
     @else
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-            <!-- Card: Total de Préstamos -->prestamos
+            <!-- Card: Total de Préstamos -->
             <div class="bg-white dark:bg-gray-800/50 rounded-lg shadow-md p-4">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white">{{ __('app.Total de Préstamos') }}</h3>
                 <p class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mt-2">{{ $totalLoans }}</p>
