@@ -1,7 +1,7 @@
 <div>
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('app.Mis Ahorros') }}</h1>
 
-    <div class="mt-4 p-4 bg-blue-100 dark:bg-blue-900/50 rounded-lg shadow-md">
+    <div class="mt-4 p-4 bg-blue-100 dark:bg-gray-700 rounded-lg shadow-md">
         <p class="text-blue-700 dark:text-blue-300">{{ __('app.Listado de todas tus cuentas de ahorro.') }}</p>
     </div>
 
@@ -10,7 +10,7 @@
             {{ __('app.Tu cuenta de usuario no está asociada a ningún socio. Por favor, contacta con la administración.') }}
         </div>
     @elseif($savings->isEmpty())
-        <div class="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/50 rounded-lg shadow-md text-yellow-800 dark:text-yellow-200">
+        <div class="mt-4 p-4 bg-yellow-100 dark:bg-gray-800 rounded-lg shadow-md text-yellow-800 dark:text-yellow-200">
             {{ __('app.No tienes cuentas de ahorro registradas.') }}
         </div>
     @else

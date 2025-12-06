@@ -24,6 +24,8 @@ class MyLoans extends Component
     {
         $user = Auth::user();
         $this->socio = Socio::where('user_id', $user->id)->firstOrFail();
+        $this->showPayLoanModal = false;
+        $this->selectedLoanId = null;
     }
 
     public function showPayLoanModal($loanId)

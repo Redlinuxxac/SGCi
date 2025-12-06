@@ -1,8 +1,8 @@
 <div>
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ __('app.Portal del Socio') }}</h1>
 
-    <div class="mt-4 p-4 bg-blue-100 dark:bg-blue-900/50 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-blue-800 dark:text-blue-200">{{ __('app.Bienvenido a tu Portal Personal') }}</h2>
+    <div class="mt-4 p-4 bg-blue-100 dark:bg-gray-700 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold text-blue-800 dark:bg-blue-200">{{ __('app.Bienvenido a tu Portal Personal') }}</h2>
         <p class="text-blue-700 dark:text-blue-300">{{ __('app.Aquí puedes gestionar tus datos, préstamos y ahorros.') }}</p>
     </div>
 

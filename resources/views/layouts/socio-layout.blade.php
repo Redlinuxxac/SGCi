@@ -4,6 +4,7 @@
         @include('partials.head')
         <title>{{ config('app.name', 'Laravel') }}</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
         <div class="flex h-screen bg-gray-100 dark:bg-gray-900">

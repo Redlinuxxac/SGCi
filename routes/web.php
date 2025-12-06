@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/socio/my-loans', SocioMyLoans::class)->name('socio.my-loans');
         Route::get('/socio/my-savings', SocioMySavings::class)->name('socio.my-savings');
         Route::get('/socio/my-loans/{loan}/installments', \App\Livewire\Socio\LoanInstallments::class)->name('socio.my-loans.installments');
+        Route::get('/socio/my-loans/{loan}/pay', \App\Livewire\Socio\PayLoan::class)->name('socio.my-loans.pay');
     });
 
     Route::redirect('settings', 'settings/profile');
